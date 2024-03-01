@@ -86,9 +86,37 @@ export default class Vec2D {
     }
 
     /**
-     * @returns a new vector that is opposite this vector 
+     * Flip this vector's x coordinate
+     * @returns this vector
+     */
+    public reflectX(): Vec2D {
+        this._x = -this._x;
+        return this;
+    }
+
+    /**
+     * Flip this vector's y coordinate
+     * @returns this vector
+     */
+    public reflectY(): Vec2D {
+        this._y = -this._y;
+        return this;
+    }
+
+    /**
+     * Flip this vector in the x and y axes, negating them
+     * @returns this vector;
      */
     public negate(): Vec2D {
+        this.reflectX();
+        this.reflectY();
+        return this;
+    }
+
+    /**
+     * @returns a new vector that is opposite this vector 
+     */
+    public getNegated(): Vec2D {
         return new Vec2D([-this._x, -this._y])
     }
 
